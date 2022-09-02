@@ -1,0 +1,487 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Pomodoro</title>
+  <link rel="shortcut icon" type="image" href="icons\pomodoro_icon.png" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+    integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pomodoro.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+
+    button[data-setter] {
+      outline: none;
+      background: transparent;
+      border: none;
+      font-family: 'Fredoka One', cursive;
+      font-weight: 300;
+      font-size: 18px;
+      width: 25px;
+      height: 30px;
+      color: black;
+      cursor: pointer;
+      position: static;
+    }
+
+    button[data-setter]:hover {
+      opacity: 0.5;
+    }
+
+    .containerTime {
+      position: relative;
+      top: 30px;
+      width: 19.3em;
+      margin: 0 auto;
+      justify-content: center;
+      align-content: center;
+      display: inline-block;
+      background-color: none;
+    }
+
+    .setters {
+      position: absolute;
+      left: 95px;
+      top: 75px;
+    }
+
+    .minutes-set {
+      float: left;
+      margin-right: 28px;
+    }
+
+    .seconds-set {
+      float: right;
+    }
+
+    .controlls {
+      position: absolute;
+      left: 80px;
+      top: 105px;
+      text-align: center;
+    }
+
+    .display-remain-time {
+      font-family: "Fredoka One";
+      font-weight: 100;
+      font-size: 65px;
+      color: black;
+      padding-bottom: 5px;
+    }
+
+    #pause {
+      outline: none;
+      background: transparent;
+      border: none;
+      margin-top: 4px;
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
+
+    .play::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-left: 22px solid black;
+    }
+
+    .pause::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      margin-top: 4px;
+      left: 12px;
+      width: 15px;
+      height: 30px;
+      background-color: transparent;
+      border-radius: 1px;
+      border: 5px solid black;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    #pause:hover {
+      opacity: 0.8;
+    }
+
+    .e-c-base {
+      fill: white;
+      stroke: none;
+      stroke-width: 6px;
+      transform: translateX(8px);
+    }
+
+    .e-c-progress {
+      fill: none;
+      stroke: black;
+      stroke-width: 4px;
+      transition: stroke-dashoffset 0.7s;
+      transform: translateY(8px);
+
+    }
+
+    .e-c-pointer {
+      fill: transparent;
+      stroke: transparent;
+      stroke-width: 2px;
+      transform: translateY(8px);
+    }
+
+    #e-pointer {
+      transition: transform 0.7s;
+    }
+
+    h1 {
+      margin-top: 150px;
+      text-align: center;
+    }
+
+    body {
+      background-color: #ff7974;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container ">
+      <div class="row d-flex align-items-center">
+        <div class="window col homeButton" id="home">
+          <a href="home.html"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+              class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path
+                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+            </svg>
+            </svg></a>
+        </div>
+        <div class="window col item d-flex align-items-center justify-content-center" id="calendario">
+          <button class="hitbox" onclick="window.location='calendarjs.html';"><a
+              href="calendarjs.html">Calendario</a></button>
+        </div>
+        <div class="window col item d-flex align-items-center justify-content-center" id="proyectos">
+          <button class="hitbox" onclick="window.location='proyectos.html';"><a
+              href="proyectos.html">Proyectos</a></button>
+        </div>
+        <div class="window col  item d-flex align-items-center justify-content-center" id="pomodoro">
+
+          <button class="hitbox" onclick="window.location='pomodoro.html';"><a
+              href="pomodoro.html">Pomodoro</a></button>
+        </div>
+        <div class="window col item d-flex align-items-center justify-content-center" id="notas">
+          <button class="hitbox" onclick="window.location='notas.html';"><a href="notas.html">Notas</a></button>
+        </div>
+        <button class="col item d-flex align-items-center justify-content-center" id="questionMark" type="button"
+          data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg
+            xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#fab004" class="bi bi-question-lg"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z" />
+          </svg></button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Pomodoro </h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            El Pomodoro es un método de estudio que hace sets de trabajo intenso de 25 minutos, para después descansar
+            5. <br> Esta pestaña te ayudará a temporizarte como es debido, ya que emplea alarmas.
+            <p>Si quieres más información acerca de el método pomodoro <a
+                href="http://eclaponline.jcyl.es/newsletters/2018/marzo/pdf/formate.pdf">Click aquí.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </nav>
+
+
+
+
+  </div>
+  <div class="css-script-clear"></div>
+  </div>
+  </div>
+  <div class="papa">
+    <div class="mom d-flex align-items-center justify-content-center">
+
+
+      <div class="containerTime">
+        <div class="setters">
+          <div class="minutes-set">
+            <button data-setter="minutes-plus">+</button>
+            <button data-setter="minutes-minus">-</button>
+
+          </div>
+          <div class="seconds-set">
+            <button data-setter="seconds-plus">+</button>
+            <button data-setter="seconds-minus">-</button>
+          </div>
+        </div>
+        <div class="circle"> <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(110,110)">
+              <circle r="100" class="e-c-base" />
+              <g transform="rotate(-90)">
+                <circle r="100" class="e-c-progress" />
+                <g id="e-pointer">
+                  <circle cx="100" cy="0" r="8" class="e-c-pointer" />
+                </g>
+              </g>
+            </g>
+          </svg> </div>
+        <div class="controlls">
+          <div class="display-remain-time">25:00</div>
+          <button class="play" id="pause"></button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <br>
+    <br>
+    <div class="d-flex align-items-center justify-content-center">
+      <button id="rest" class="botonTiempo" onclick="changeTime()"><svg xmlns="http://www.w3.org/2000/svg" width="36"
+          height="36" fill="currentColor" class="bi bi-cup" viewBox="0 0 16 16">
+          <path
+            d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z" />
+        </svg></button>
+      <button class="botonTiempo" id="restartBtn" onclick="window.location.href = 'pomodoro.html'"> <svg
+          xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-arrow-clockwise"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+          <path
+            d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+        </svg></button>
+      <button id="study" class="botonTiempo" onclick="changeStudyTime()"><svg xmlns="http://www.w3.org/2000/svg"
+          width="36" height="36" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+          <path
+            d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+        </svg></button>
+    </div>
+  </div>
+
+
+  <audio id="audiotag1" src="215415__unfa__ping.flac" preload="auto"></audio>
+  <audio id="audiotag2" src="496760__malle99__click-tick-2.wav" preload="auto"></audio>
+  <audio id="tictac" src="534094__pbimal__clock-tick-01.flac" preload="auto"></audio>
+  <audio id="bellring" src="536774__egomassive__ring.ogg" preload="auto"></audio>
+  <script>
+
+
+
+    let progressBar = document.querySelector('.e-c-progress');
+    let indicator = document.getElementById('e-indicator');
+    let pointer = document.getElementById('e-pointer');
+    let length = Math.PI * 2 * 100;
+
+
+    progressBar.style.strokeDasharray = length;
+
+    function update(value, timePercent) {
+      var offset = - length - length * value / (timePercent);
+      progressBar.style.strokeDashoffset = offset;
+      pointer.style.transform = `rotate(${360 * value / (timePercent)}deg)`;
+    };
+
+    // otros
+
+
+
+    const displayOutput = document.querySelector('.display-remain-time')
+    const pauseBtn = document.getElementById('pause');
+    const setterBtns = document.querySelectorAll('button[data-setter]');
+
+    let intervalTimer;
+    let timeLeft;
+    let wholeTime = 3;
+    let isPaused = false;
+    let isStarted = false;
+
+
+    update(wholeTime, wholeTime); //refreshes progress bar
+    displayTimeLeft(wholeTime);
+
+    function changeWholeTime(seconds) {
+      if ((wholeTime + seconds) > 0) {
+        play_time_modifier();
+        wholeTime += seconds;
+        update(wholeTime, wholeTime);
+      }
+    }
+
+    for (var i = 0; i < setterBtns.length; i++) {
+      setterBtns[i].addEventListener("click", function (event) {
+        var param = this.dataset.setter;
+        switch (param) {
+          case 'minutes-plus':
+            changeWholeTime(1 * 60);
+            break;
+          case 'minutes-minus':
+            changeWholeTime(-1 * 60);
+            break;
+          case 'seconds-plus':
+            changeWholeTime(1);
+            break;
+          case 'seconds-minus':
+            changeWholeTime(-1);
+            break;
+        }
+        displayTimeLeft(wholeTime);
+      });
+    }
+
+    function timer(seconds) { //counts time, takes seconds
+      let remainTime = Date.now() + (seconds * 1000);
+      displayTimeLeft(seconds);
+
+      intervalTimer = setInterval(function () {
+        timeLeft = Math.round((remainTime - Date.now()) / 1000);
+        play_time_ticking();
+        if (timeLeft < 0) {
+          ring_bell();
+          clearInterval(intervalTimer);
+          isStarted = false;
+          setterBtns.forEach(function (btn) {
+            btn.disabled = false;
+            btn.style.opacity = 1;
+          });
+          displayTimeLeft(wholeTime);
+          pauseBtn.classList.remove('pause');
+          pauseBtn.classList.add('play');
+          return;
+        }
+        displayTimeLeft(timeLeft);
+      }, 1000);
+    }
+    function pauseTimer(event) {
+      if (isStarted === false) {
+        timer(wholeTime);
+        isStarted = true;
+        this.classList.remove('play');
+        this.classList.add('pause');
+
+        setterBtns.forEach(function (btn) {
+          btn.disabled = true;
+          btn.style.opacity = 0.5;
+        });
+
+      } else if (isPaused) {
+        this.classList.remove('play');
+        this.classList.add('pause');
+        timer(timeLeft);
+        isPaused = isPaused ? false : true
+      } else {
+        this.classList.remove('pause');
+        this.classList.add('play');
+        clearInterval(intervalTimer);
+        isPaused = isPaused ? false : true;
+      }
+    }
+
+    if (isStarted === true) {
+      play_single_sound();
+    }
+
+    function displayTimeLeft(timeLeft) { //displays time on the input
+      let minutes = Math.floor(timeLeft / 60);
+      let seconds = timeLeft % 60;
+      let displayString = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      displayOutput.textContent = displayString;
+      update(timeLeft, wholeTime);
+    }
+
+
+    function play_single_sound() {
+      document.getElementById('audiotag1').currentTime = 0;
+      document.getElementById('audiotag1').play();
+    }
+
+    function play_time_ticking() {
+      document.getElementById('audiotag2').currentTime = 0;
+      document.getElementById('tictac').play();
+    }
+
+    function play_time_modifier() {
+      document.getElementById('audiotag2').currentTime = 0;
+      document.getElementById('audiotag2').play();
+    }
+
+    function ring_bell() {
+      document.getElementById('bellring').currentTime = 0;
+      document.getElementById('bellring').play();
+    }
+
+    function changeTime() {
+      wholeTime = (5 * 60)
+      displayTimeLeft(wholeTime);
+      play_time_modifier();
+    }
+    function changeStudyTime() {
+      wholeTime = (25 * 60);
+      displayTimeLeft(wholeTime);
+      play_time_modifier();
+    }
+
+
+
+
+    pauseBtn.addEventListener("click", play_single_sound);
+    pauseBtn.addEventListener('click', pauseTimer);
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(function () {
+      $(document).scroll(function () {
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+  </script>
+
+</body>
+
+</html>
