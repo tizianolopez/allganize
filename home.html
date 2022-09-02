@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="shortcut icon" type="image" href="icons\home_icon.png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container ">
+            <div class="row d-flex align-items-center">
+                <div class="window col homeButton" id="home">
+                    <a href="home.html"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35"
+                            fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                        </svg>
+                        </svg></a>
+                </div>
+                <div class="window col item d-flex align-items-center justify-content-center" id="calendario">
+                    <button class="hitbox" onclick="window.location='calendarjs.html';"><a href="calendarjs.html">Calendario</a></button>
+                </div>
+                <div class="window col item d-flex align-items-center justify-content-center" id="proyectos">
+                    <button class="hitbox" onclick="window.location='proyectos.html';"><a href="proyectos.html">Proyectos</a></button>
+                </div>
+                <div class="window col  item d-flex align-items-center justify-content-center" id="pomodoro">
+                  
+                    <button class="hitbox" onclick="window.location='pomodoro.html';"><a href="pomodoro.html">Pomodoro</a></button>
+                </div>
+                <div class="window col item d-flex align-items-center justify-content-center" id="notas">
+                    <button class="hitbox" onclick="window.location='notas.html';"><a href="notas.html">Notas</a></button>
+                </div>
+                <button class="col item d-flex align-items-center justify-content-center" id="questionMark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#fab004" class="bi bi-question-lg" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z"/>
+                </svg></button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas-header">
+<h5 id="offcanvasRightLabel">Botó d'ajuda</h5>
+<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+</div>
+<div class="offcanvas-body">
+Sempre que premis aquest botó, reberàs ajuda o explicacions respecte la pestanya a la que et trobes i la eina que estiguis utilitzant.
+<br>
+
+
+Si tens algun problema o trobes errors a la web, no dubtis en notificar-nos a <u>trprojecteallganize@gmail.com</u>.
+</div>
+</div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <h1 class="tit"style="color: rgb(255, 204, 0)"><span style="color: blue">All</span>Ganize</h1>
+  
+    <br>
+    <div class="content">
+    <h1> Què, qui, per què?</h1>
+    <hr>
+    <p> Som estudiants de segon de batxillerat a l'institut Poeta Maragall que hem decidit a fer com a projecte de Treball de Recerca una aplicació web per a ajudar a estudiar a tots els alumnes que puguem. Si ets nou per aquí, explora les pestanyes i fes ús de les eines que hem creat; si no entens alguna part de la web, sempre pots llegir la part de la nostra memòria on expliquem còm funciona cada part.</p>
+
+<hr>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Descarregar Memòria
+  </button>
+  <hr>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Descarregar memòria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <button onclick="window.open('08 G Dibuix tècnic 1 A.pdf')" class="modalStuff"> Descarrega en PDF</button>
+          <button onclick="window.open('Redacció3Marco.docx')" class="modalStuff"> Descarrega en Word</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top: 20px;">
+
+  Si vols mirar no només les instruccions, si no el procès de programació, com hem après, els funcionaments dels llenguatges de programació, etc.
+</p>
+<p> Si ara no us ve de gust llegir, tenim captures del procès i l'evolució de la nostra app i, conseqüentment, de nosaltres mateixos.</p>
+<br>
+<br>
+<div class="d-flex align-items-center justify-content-center">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="icons\Captura de pantalla (204).png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Principis de Desenvolupament</h5>
+              <p>Primeres setmanes del curs</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="icons\Captura de pantalla (208).png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Comencem a aprendre</h5>
+              <p>Idees més desenvolupades però només croquis</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="icons\Captura de pantalla (206).png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Idea més propera al croquis</h5>
+              <p>1 mes després d'haver començat el curs</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="icons\Captura de pantalla (205).png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Avenços al disseny</h5>
+              <p>Ho intentem apropar més a l'idea de la carpeta</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="icons\Captura de pantalla (209).png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Disseny més proper al definitiu</h5>
+              <p></p>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      
+</div>
+
+
+
+
+</div>
+
+<br>
+      <br>
+      <p style="font-size: 1.8em;">Prou de parlar! Explora i aprèn, esperem ser útils!</p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
